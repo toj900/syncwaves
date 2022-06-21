@@ -1,0 +1,15 @@
+# --->
+# ... Sync Wave One
+# ... does not have any depencencies 
+# ---> 
+source:
+  kind: ConfigMap
+  name: dependencies
+  fieldPath: data.sync-wave0
+targets:
+- select:
+    kind: HelmRelease
+  fieldPaths:
+  - spec.dependsOn.[name=sync-wave1].name
+  options:
+    create: false

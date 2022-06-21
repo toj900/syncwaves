@@ -1,0 +1,12 @@
+# SyncWave Three
+source:
+  kind: ConfigMap
+  name: dependencies
+  fieldPath: data.sync-wave2
+targets:
+- select:
+    kind: HelmRelease
+  fieldPaths:
+  - spec.dependsOn.[name=sync-wave3].name
+  options:
+    create: false
